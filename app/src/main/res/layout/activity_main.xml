@@ -27,9 +27,6 @@
         android:orientation="horizontal"
         android:padding="5dp">
 
-
-
-
         <RadioButton
             android:id="@+id/rb_net_audio"
             style="@style/bottom_button_style"
