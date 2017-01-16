@@ -13,6 +13,7 @@ import com.atguigu.yingyinxianfeng.R;
 import com.atguigu.yingyinxianfeng.bean.NetAudioBean;
 import com.atguigu.yingyinxianfeng.utils.Utils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.xutils.x;
 
@@ -287,30 +288,52 @@ public class NetAudioFragmentAdapter extends BaseAdapter {
         }
 
     }
-    class TextHolder{
+    class TextHolder extends BaseViewHolder{
+        TextView tvContext;
 
-        private TextView textView;
+        TextHolder(View convertView) {
+            super(convertView);
+            //中间公共部分 -所有的都有
+            tvContext = (TextView) convertView.findViewById(R.id.tv_context);
 
-        public TextHolder(View converView){
-            textView = (TextView) converView.findViewById(R.id.tv_name);
 
         }
+
         public void setData(NetAudioBean.ListBean mediaItem) {
-            textView.setText("我是文字的内容");
+            super.setData(mediaItem);
+            //设置文本-所有的都有
+            tvContext.setText(mediaItem.getText() + "_" + mediaItem.getType());
         }
+
 
     }
-    class ImageHolder{
+    class ImageHolder extends BaseViewHolder{
 
-        private TextView textView;
+        TextView tvContext;
+        ImageView ivImageIcon;
 
-        public ImageHolder(View converView){
-            textView = (TextView) converView.findViewById(R.id.tv_name);
+        ImageHolder(View convertView) {
+            super(convertView);
+            //中间公共部分 -所有的都有
+            tvContext = (TextView) convertView.findViewById(R.id.tv_context);
+            ivImageIcon = (ImageView) convertView.findViewById(R.id.iv_image_icon);
 
         }
+
         public void setData(NetAudioBean.ListBean mediaItem) {
-            textView.setText("我是图片的内容");
+            super.setData(mediaItem);
+            //设置文本-所有的都有
+            tvContext.setText(mediaItem.getText() + "_" + mediaItem.getType());
+            //图片特有的
+
+            ivImageIcon.setImageResource(R.drawable.bg_item);
+            if (mediaItem.getImage() != null && mediaItem.getImage() != null && mediaItem.getImage().getSmall() != null) {
+                Glide.with(mContext).load(mediaItem.getImage().getDownload_url().get(0)).placeholder(R.drawable.bg_item).error(R.drawable.bg_item).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivImageIcon);
+            }
+
+
         }
+
 
     }
     /*class VideoHoder{
