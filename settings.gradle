@@ -1,1 +1,1 @@
-include ':app', ':EventBus', ':EventBus3.0_Sample', ':xutils', ':jcvideoplayer-lib', ':PhotoView_library'
+include ':app', ':EventBus', ':EventBus3.0_Sample', ':xutils', ':jcvideoplayer-lib', ':PhotoView_library', ':binderService', ':JieCaoVideoPlayer'

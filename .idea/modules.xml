@@ -4,9 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EventBus/EventBus.iml" filepath="$PROJECT_DIR$/EventBus/EventBus.iml" />
       <module fileurl="file://$PROJECT_DIR$/EventBus3.0_Sample/EventBus3.0_Sample.iml" filepath="$PROJECT_DIR$/EventBus3.0_Sample/EventBus3.0_Sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JieCaoVideoPlayer/JieCaoVideoPlayer.iml" filepath="$PROJECT_DIR$/JieCaoVideoPlayer/JieCaoVideoPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/PhotoView_library/PhotoView_library.iml" filepath="$PROJECT_DIR$/PhotoView_library/PhotoView_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/YingYinXianFeng.iml" filepath="$PROJECT_DIR$/YingYinXianFeng.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/binderService/binderService.iml" filepath="$PROJECT_DIR$/binderService/binderService.iml" />
       <module fileurl="file://$PROJECT_DIR$/jcvideoplayer-lib/jcvideoplayer-lib.iml" filepath="$PROJECT_DIR$/jcvideoplayer-lib/jcvideoplayer-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/xutils/xutils.iml" filepath="$PROJECT_DIR$/xutils/xutils.iml" />
     </modules>

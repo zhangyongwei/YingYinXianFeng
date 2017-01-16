@@ -3,7 +3,7 @@ package com.atguigu.yingyinxianfeng.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.atguigu.yingyinxianfeng.service.MusicPlayerService;
+
 
 
 /**
@@ -39,20 +39,5 @@ public class CacheUtils {
      * @param key
      * @param value
      */
-    public static void setPlaymode(Context context, String key, int value) {
-        SharedPreferences sp = context.getSharedPreferences("atguigu",Context.MODE_PRIVATE);
-        sp.edit().putInt(key,value).commit();
-    }
 
-    /**
-     * 得到保存播放模式
-     * @param context
-     * @param key
-     * @return
-     */
-    public static int getPlaymode(Context context, String key) {
-        SharedPreferences sp = context.getSharedPreferences("atguigu",Context.MODE_PRIVATE);
-        return sp.getInt(key, MusicPlayerService.REPEATE_NOMAL);
-
-    }
 }

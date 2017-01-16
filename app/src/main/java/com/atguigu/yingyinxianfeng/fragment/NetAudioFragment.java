@@ -76,6 +76,7 @@ public class NetAudioFragment extends BaseFragment {
 
                 CacheUtils.putString(mContext,Constant.NET_AUDIO_URL,result);
                 LogUtil.e("onSuccess==" + result);
+                Log.e("TAG","result = "+result);
                 processData(result);
             }
 
@@ -136,15 +137,15 @@ public class NetAudioFragment extends BaseFragment {
 
 
     private List<NetAudioBean.ListBean>  parsedJson(String json) {
-        NetAudioBean netAudioBean = new Gson().fromJson(json,NetAudioBean.class);
+        NetAudioBean netAudioBean = new Gson().fromJson(json, NetAudioBean.class);
         return netAudioBean.getList();
     }
-   /* *//**
+   /**
      * 设置公共的数据
      *
      * @param mediaItem
-     *//*
-    public void setData(NetAudioBean.ListBean mediaItem) {
+     */
+   /* public void setData(NetAudioBean.ListBean mediaItem) {
         if (mediaItem.getU() != null && mediaItem.getU().getHeader() != null && mediaItem.getU().getHeader().get(0) != null) {
             x.image().bind(ivHeadpic, mediaItem.getU().getHeader().get(0));
         }
@@ -170,6 +171,6 @@ public class NetAudioFragment extends BaseFragment {
         tvShenheCaiNumber.setText(mediaItem.getDown() + "");
         tvPostsNumber.setText(mediaItem.getForward() + "");
 
-    }
-*/
+    }*/
+
 }

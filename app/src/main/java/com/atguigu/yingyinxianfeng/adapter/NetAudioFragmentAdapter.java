@@ -11,8 +11,15 @@ import android.widget.TextView;
 
 import com.atguigu.yingyinxianfeng.R;
 import com.atguigu.yingyinxianfeng.bean.NetAudioBean;
+import com.atguigu.yingyinxianfeng.utils.Utils;
+import com.bumptech.glide.Glide;
+
+import org.xutils.x;
 
 import java.util.List;
+
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 import static android.content.ContentValues.TAG;
 
@@ -224,6 +231,34 @@ public class NetAudioFragmentAdapter extends BaseAdapter {
         }
 
 
+        public void setData(NetAudioBean.ListBean mediaItem) {
+            if (mediaItem.getU() != null && mediaItem.getU().getHeader() != null && mediaItem.getU().getHeader().get(0) != null) {
+                x.image().bind(ivHeadpic, mediaItem.getU().getHeader().get(0));
+            }
+            if (mediaItem.getU() != null && mediaItem.getU().getName() != null) {
+                tvName.setText(mediaItem.getU().getName() + "");
+            }
+
+            tvTimeRefresh.setText(mediaItem.getPasstime());
+
+            //设置标签
+            List<NetAudioBean.ListBean.TagsEntity> tagsEntities = mediaItem.getTags();
+            if (tagsEntities != null && tagsEntities.size() > 0) {
+                StringBuffer buffer = new StringBuffer();
+                for (int i = 0; i < tagsEntities.size(); i++) {
+                    buffer.append(tagsEntities.get(i).getName() + " ");
+                }
+                tvVideoKindText.setText(buffer.toString());
+            }
+
+            //设置点赞，踩,转发
+
+            tvShenheDingNumber.setText(mediaItem.getUp());
+            tvShenheCaiNumber.setText(mediaItem.getDown() + "");
+            tvPostsNumber.setText(mediaItem.getForward() + "");
+
+
+        }
     }
     class ADHolder{
 
@@ -278,7 +313,7 @@ public class NetAudioFragmentAdapter extends BaseAdapter {
         }
 
     }
-    class VideoHoder{
+    /*class VideoHoder{
 
         private TextView textView;
 
@@ -290,9 +325,9 @@ public class NetAudioFragmentAdapter extends BaseAdapter {
             textView.setText("我是视频的内容");
         }
 
-    }
+    }*/
 
-   /* class VideoHoder extends BaseViewHolder {
+    class VideoHoder extends BaseViewHolder {
 
         Utils utils;
         TextView tvContext;
@@ -314,10 +349,33 @@ public class NetAudioFragmentAdapter extends BaseAdapter {
             jcvVideoplayer = (JCVideoPlayerStandard) convertView.findViewById(R.id.jcv_videoplayer);
         }
 
+        /**
+         * 绑定数据
+         * @param mediaItem
+         */
         public void setData(NetAudioBean.ListBean mediaItem) {
+            super.setData(mediaItem);
+
+            //设置文本-所有的都有,只有广告没有哦
+            tvContext.setText(mediaItem.getText() + "_" + mediaItem.getType());
+
+            //视频特有的------------------------
+            //第一个参数是视频播放地址，第二个参数是显示封面的地址，第三参数是标题
+            boolean setUp = jcvVideoplayer.setUp(
+                    mediaItem.getVideo().getVideo().get(0), JCVideoPlayer.SCREEN_LAYOUT_LIST,
+                    "");
+            //加载图片
+            if (setUp) {
+//                ImageLoader.getInstance().displayImage(mediaItem.getVideo().getThumbnail().get(0),
+//                        jcvVideoplayer.thumbImageView);
+                Glide.with(mContext).load(mediaItem.getVideo().getThumbnail().get(0)).into(jcvVideoplayer.thumbImageView);
+            }
+            tvPlayNums.setText(mediaItem.getVideo().getPlaycount() + "次播放");
+            tvVideoDuration.setText(utils.stringForTime(mediaItem.getVideo().getDuration() * 1000) + "");
+
 
         }
-    }*/
+    }
    /* *//**
      * 设置公共的数据
      *
